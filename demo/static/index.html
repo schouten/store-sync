@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Demo WebSocket App</title>
+<script type="text/javascript" src="js/lib/knockout-2.1.0.js"></script>
+<script type="text/javascript" src="js/lib/storesync.js"></script>
+<script type="text/javascript" src="js/demo/init.js"></script>
+<script type="text/javascript" src="js/demo/alerter.js"></script>
+<script type="text/javascript" src="js/demo/mainscreen.js"></script>
+<script type="text/javascript" src="js/demo/logout.js"></script>
+<script type="text/javascript" src="js/demo/time.js"></script>
+<script type="text/javascript" src="js/demo/phone.js"></script>
+<script type="text/javascript" src="js/demo/message.js"></script>
+<script type="text/javascript" src="js/demo/svgclock.js"></script>
+<script type="text/javascript" src="js/demo/maintab.js"></script>
+<script type="text/javascript" src="js/demo/sendmessage.js"></script>
+<script type="text/javascript" src="js/demo/reloader.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/demo.css">
+</head>
+
+<body>
+
+	<!-- Mainscreen Loading -->
+	<div id="loading" data-bind="style:{ display: mainscreen.loading}">
+		<h1>loading...</h1>
+	</div>
+
+	<!-- Mainscreen Main -->
+	<div id="main" style="display: none;" data-bind="style:{ display: mainscreen.main }">
+		<h1>
+			Demo: <span data-bind="text: time.value"></span>
+		</h1>
+
+		<!-- Tab-Buttons -->
+		<div id="tabButtons">
+			<div data-bind="style:{ backgroundColor: maintab.displayPhoneTabColor }">
+				<button data-bind="click: maintab.switchToPhone">☎</button>
+			</div>
+			<div data-bind="style:{ backgroundColor: maintab.displayMessageTabColor }">
+				<button data-bind="click: maintab.switchToMessage">✉</button>
+			</div>
+			<div data-bind="style:{ backgroundColor: maintab.displayClockTabColor }">
+				<button data-bind="click: maintab.switchToClock">⌚</button>
+			</div>
+			<div>
+				<button class="logout" data-bind="click: logout">⎚</button>
+			</div>
+		</div>
+
+		<!-- Tab-Content -->
+		<div id="tabContent">
+
+			<!-- Phone Tab Display -->
+			<div id="phone" data-bind="style:{ display: maintab.displayPhoneTab }">
+				<table>
+					<tr>
+						<td colspan="3"><input readonly="readonly" data-bind="value:phone.display"></input></td>
+					</tr>
+					<tr>
+						<td><button data-bind="click:phone.b1">1</button></td>
+						<td><button data-bind="click:phone.b2">2</button></td>
+						<td><button data-bind="click:phone.b3">3</button></td>
+					</tr>
+					<tr>
+						<td><button data-bind="click:phone.b4">4</button></td>
+						<td><button data-bind="click:phone.b5">5</button></td>
+						<td><button data-bind="click:phone.b6">6</button></td>
+					</tr>
+					<tr>
+						<td><button data-bind="click:phone.b7">7</button></td>
+						<td><button data-bind="click:phone.b8">8</button></td>
+						<td><button data-bind="click:phone.b9">9</button></td>
+					</tr>
+					<tr>
+						<td><button data-bind="click:phone.bc">
+								<b class="cancel">C</b>
+							</button></td>
+						<td><button data-bind="click:phone.b0">0</button></td>
+						<td><button class="dial" data-bind="click:phone.bdial">☎</button></td>
+					</tr>
+				</table>
+			</div>
+
+			<!-- Message Tab Display -->
+			<div id="sendMessage" data-bind="style:{ display: maintab.displayMessageTab }">
+				<b>Neue Nachricht</b>
+				<p>
+					<input class="text" data-bind="value: sendmessage.message" type="text"></input> <br /> <label><input data-bind="checked: sendmessage.urgent"
+						type="checkbox"></input> wichtig</label>
+				</p>
+				<p>
+					<button data-bind="click: sendmessage.submit">Senden</button> <button data-bind="click: sendmessage.reset">Abbr.</button>
+				</p>
+			</div>
+
+			<!-- SVG Clock Tab Display -->
+			<div data-bind="style:{ display: maintab.displayClockTab }">
+				<svg width="121" height="121" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="61" cy="61" r="60" style="fill:#009999;" />
+					<circle cx="61" cy="61" r="55" style="fill:#0000FF;" />
+					<line x1="61" y1="61" x2="61" y2="25" style="stroke:rgb(0,200,200);stroke-width:6" data-bind="attr: { transform: svgclock.transformHour }" />
+					<line x1="61" y1="61" x2="61" y2="15" style="stroke:rgb(0,200,200);stroke-width:6" data-bind="attr: { transform: svgclock.transformMin }" />
+					<line x1="61" y1="75" x2="61" y2="10" style="stroke:rgb(0,200,200);stroke-width:3" data-bind="attr: { transform: svgclock.transformSec }" />
+					<circle cx="61" cy="61" r="5" style="fill:#009999;" />
+				</svg>
+			</div>
+
+		</div>
+
+		<!-- Messages -->
+		<div id="message">
+			<b>Nachrichten</b>
+			<table data-bind="foreach: message.messages">
+				<tr>
+					<td data-bind="text: dateString, style: {color: urgent ? 'red' : 'black'}"></td>
+					<td data-bind="text: message, style: {color: urgent ? 'red' : 'black'}"></td>
+				</tr>
+			</table>
+		</div>
+
+		<!-- Clearer -->
+		<div class="clearLeft"></div>
+
+	</div>
+
+	<!-- Mainscreen Closed -->
+	<div id="closed" style="display: none" data-bind="style:{ display: mainscreen.closed }">
+		<h1>Ende</h1>
+	</div>
+</body>
+
+<script type="text/javascript" src="js/demo/start.js"></script>
+</html>

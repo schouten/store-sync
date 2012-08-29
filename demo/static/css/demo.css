@@ -1,0 +1,13 @@
+@import url("maintab.css");
+@import url("phone.css");
+@import url("sendMessage.css");
+@import url("message.css");
+
+body {
+	font-family: helvetica;
+	background-color: silver;
+}
+
+div .clearLeft {
+	clear: left;
+}

@@ -1,0 +1,9 @@
+#message {
+	float: left;
+	margin-left: 1em;
+	font-size: 85%;
+}
+
+#message tr {
+	background-color: lightgrey;
+}

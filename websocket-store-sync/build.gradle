@@ -1,0 +1,17 @@
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'Websocket-Store-Sync', 'Implementation-Version': version 
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.2.+' 
+	compile group: 'org.eclipse.jetty', name: 'jetty-websocket', version: '8.1.+' 
+	compile project(':store')
+	compile group: 'javax.servlet', name: 'servlet-api', version: '3.+'
+}
+

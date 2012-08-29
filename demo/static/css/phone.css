@@ -1,0 +1,15 @@
+#phone input {
+	width: 9em;
+}
+
+#phone button {
+	width: 3em;
+}
+
+#phone .cancel {
+	color: red;
+}
+
+#phone .dial {
+	color: green;
+}

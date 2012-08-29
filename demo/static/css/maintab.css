@@ -1,0 +1,25 @@
+#tabButtons,#tabContent {
+	float: left;
+}
+
+#tabContent {
+	background-color: white;
+	width: 8.5em;
+	height: 12em;
+	padding: 0.3em;
+	border-bottom-right-radius: 40px;
+}
+
+#tabButtons div {
+	width: 3.5em;
+	padding: 0.3em;
+}
+
+#tabButtons div button {
+	font-size: 1.5em;
+	width: 2em;
+}
+
+#tabButtons div .logout {
+	color: red;
+}

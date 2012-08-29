@@ -1,0 +1,28 @@
+defaultTasks 'build'
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	repositories {
+		mavenCentral()
+	}
+	
+	compileJava {
+		options.encoding = "UTF-8"
+	}
+
+	compileTestJava {
+		options.encoding = "UTF-8"
+	}
+	
+	sourceCompatibility = 1.7
+	version = '0.1'
+
+	jar {
+		manifest.attributes provider: 'gradle'
+	}
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.1'
+}
